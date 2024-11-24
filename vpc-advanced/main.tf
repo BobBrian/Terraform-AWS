@@ -168,7 +168,8 @@ resource "aws_instance" "ec2_example" {
     Name = "Nwauche-EC2"
   }
   # Its advisable to setup a key beforehand and then use terraform import on it
-  key_name= "chibuEC2key"  
+  key_name= "chibuEC2key" 
+  associate_public_ip_address = true # This will make the instance accessible from the internet
   subnet_id = data.aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.sg_vpc_nwauche_us_east_1.id]
 }
